@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "Meeting Mic",
+  "short_name": "MeetingMic",
+  "author": "Luis Moran",
+  "version": "0.0.1",
+  "description": "A button to toggle microphone in Google Meet from any tab in browser window",
+  "action": {
+    "default_icon": "icon0320.png",
+    "default_title": ""
+  },
+  "commands": {
+    "toggle": {
+      "description": "Toggle microphone",
+      "suggested_key": {
+        "default": "Ctrl+Shift+D",
+        "mac": "Command+Shift+D"
+      },
+      "global": true
+    }
+  },
+  "icons": {
+    "32": "icon0320.png",
+    "48": "icon0480.png",
+    "128": "icon1280.png"
+  },
+  "host_permissions": [
+    "https://meet.google.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://meet.google.com/*"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ]
+}
